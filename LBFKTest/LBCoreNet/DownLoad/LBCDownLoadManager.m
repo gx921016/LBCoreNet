@@ -60,6 +60,7 @@ static LBCDownLoadManager *downLoadManager=nil;
                              @"process":progressBlock,
                              @"completion":successBlock,
                              @"failure":failureBlock};
+        [self.queueMtArray addObject:dict];
         return;
     }
     LBCDownLoad *downLoad = [LBCDownLoad downloader];

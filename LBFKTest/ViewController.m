@@ -146,7 +146,6 @@ NSString *URL1 = @"http://android-mirror.bugly.qq.com:8080/eclipse_mirror/juno/c
     [self.view addSubview:self.downLoadBtn2];
     [self.view addSubview:self.speedLabel2];
     [self.view addSubview:self.sizeLabel2];
-//    NSLog(@"%f--%f",[[LBCDownLoadManager shredManager]getDownLoadProgressWithUrl:URL],[[LBCDownLoadManager shredManager]getDownLoadProgressWithUrl:URL1]);
     [self.view updateConstraintsIfNeeded];
     [self.view setNeedsUpdateConstraints];
 }
