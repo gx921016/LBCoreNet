@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		42A2727591305EF7B05E7DB5 /* Pods_LBFKTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC303BA743EC7EB4FE443899 /* Pods_LBFKTest.framework */; };
-		AA4CCFE81D28D17C001E5C82 /* LBCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBD8B6531D26467A00CB0E9B /* LBCoreKit.framework */; };
 		CBD8B5F81D2645EE00CB0E9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD8B5F71D2645EE00CB0E9B /* main.m */; };
 		CBD8B5FB1D2645EE00CB0E9B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD8B5FA1D2645EE00CB0E9B /* AppDelegate.m */; };
 		CBD8B5FE1D2645EE00CB0E9B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD8B5FD1D2645EE00CB0E9B /* ViewController.m */; };
@@ -19,6 +18,9 @@
 		CBD8B61C1D2645EE00CB0E9B /* LBFKTestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD8B61B1D2645EE00CB0E9B /* LBFKTestUITests.m */; };
 		CBD8B66D1D29FD1C00CB0E9B /* ASPopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD8B66A1D29FD1C00CB0E9B /* ASPopUpView.m */; };
 		CBD8B66E1D29FD1C00CB0E9B /* ASProgressPopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD8B66C1D29FD1C00CB0E9B /* ASProgressPopUpView.m */; };
+		CBE168681D2A5999001752F6 /* LBCDownLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE168631D2A5999001752F6 /* LBCDownLoad.m */; };
+		CBE168691D2A5999001752F6 /* LBCDownLoadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE168651D2A5999001752F6 /* LBCDownLoadManager.m */; };
+		CBE1686A1D2A5999001752F6 /* LBCDownLoadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE168671D2A5999001752F6 /* LBCDownLoadModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,20 +37,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = CBD8B5F21D2645EE00CB0E9B;
 			remoteInfo = LBFKTest;
-		};
-		CBD8B6521D26467A00CB0E9B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CBD8B64D1D26467A00CB0E9B /* LBCoreKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CBD8B6331D26463600CB0E9B;
-			remoteInfo = LBCoreKit;
-		};
-		CBD8B6541D26467A00CB0E9B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CBD8B64D1D26467A00CB0E9B /* LBCoreKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = CBD8B63D1D26463600CB0E9B;
-			remoteInfo = LBCoreKitTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -72,11 +60,16 @@
 		CBD8B6171D2645EE00CB0E9B /* LBFKTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LBFKTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD8B61B1D2645EE00CB0E9B /* LBFKTestUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBFKTestUITests.m; sourceTree = "<group>"; };
 		CBD8B61D1D2645EE00CB0E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CBD8B64D1D26467A00CB0E9B /* LBCoreKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LBCoreKit.xcodeproj; path = LBCoreKit/LBCoreKit.xcodeproj; sourceTree = "<group>"; };
 		CBD8B6691D29FD1C00CB0E9B /* ASPopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASPopUpView.h; sourceTree = "<group>"; };
 		CBD8B66A1D29FD1C00CB0E9B /* ASPopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASPopUpView.m; sourceTree = "<group>"; };
 		CBD8B66B1D29FD1C00CB0E9B /* ASProgressPopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASProgressPopUpView.h; sourceTree = "<group>"; };
 		CBD8B66C1D29FD1C00CB0E9B /* ASProgressPopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASProgressPopUpView.m; sourceTree = "<group>"; };
+		CBE168621D2A5999001752F6 /* LBCDownLoad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBCDownLoad.h; sourceTree = "<group>"; };
+		CBE168631D2A5999001752F6 /* LBCDownLoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBCDownLoad.m; sourceTree = "<group>"; };
+		CBE168641D2A5999001752F6 /* LBCDownLoadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBCDownLoadManager.h; sourceTree = "<group>"; };
+		CBE168651D2A5999001752F6 /* LBCDownLoadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBCDownLoadManager.m; sourceTree = "<group>"; };
+		CBE168661D2A5999001752F6 /* LBCDownLoadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBCDownLoadModel.h; sourceTree = "<group>"; };
+		CBE168671D2A5999001752F6 /* LBCDownLoadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBCDownLoadModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +77,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA4CCFE81D28D17C001E5C82 /* LBCoreKit.framework in Frameworks */,
 				42A2727591305EF7B05E7DB5 /* Pods_LBFKTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,7 +131,7 @@
 		CBD8B5F51D2645EE00CB0E9B /* LBFKTest */ = {
 			isa = PBXGroup;
 			children = (
-				CBD8B64D1D26467A00CB0E9B /* LBCoreKit.xcodeproj */,
+				CBE168601D2A5999001752F6 /* LBCoreNet */,
 				CBD8B5F91D2645EE00CB0E9B /* AppDelegate.h */,
 				CBD8B5FA1D2645EE00CB0E9B /* AppDelegate.m */,
 				CBD8B5FC1D2645EE00CB0E9B /* ViewController.h */,
@@ -180,15 +172,6 @@
 			path = LBFKTestUITests;
 			sourceTree = "<group>";
 		};
-		CBD8B64E1D26467A00CB0E9B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CBD8B6531D26467A00CB0E9B /* LBCoreKit.framework */,
-				CBD8B6551D26467A00CB0E9B /* LBCoreKitTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		CBD8B6681D29FD1C00CB0E9B /* ASProgressPopUpView */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +181,27 @@
 				CBD8B66C1D29FD1C00CB0E9B /* ASProgressPopUpView.m */,
 			);
 			path = ASProgressPopUpView;
+			sourceTree = "<group>";
+		};
+		CBE168601D2A5999001752F6 /* LBCoreNet */ = {
+			isa = PBXGroup;
+			children = (
+				CBE168611D2A5999001752F6 /* DownLoad */,
+			);
+			path = LBCoreNet;
+			sourceTree = "<group>";
+		};
+		CBE168611D2A5999001752F6 /* DownLoad */ = {
+			isa = PBXGroup;
+			children = (
+				CBE168621D2A5999001752F6 /* LBCDownLoad.h */,
+				CBE168631D2A5999001752F6 /* LBCDownLoad.m */,
+				CBE168641D2A5999001752F6 /* LBCDownLoadManager.h */,
+				CBE168651D2A5999001752F6 /* LBCDownLoadManager.m */,
+				CBE168661D2A5999001752F6 /* LBCDownLoadModel.h */,
+				CBE168671D2A5999001752F6 /* LBCDownLoadModel.m */,
+			);
+			path = DownLoad;
 			sourceTree = "<group>";
 		};
 		FF9A4E688FE37F398F60CAA1 /* Pods */ = {
@@ -301,12 +305,6 @@
 			mainGroup = CBD8B5EA1D2645EE00CB0E9B;
 			productRefGroup = CBD8B5F41D2645EE00CB0E9B /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = CBD8B64E1D26467A00CB0E9B /* Products */;
-					ProjectRef = CBD8B64D1D26467A00CB0E9B /* LBCoreKit.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				CBD8B5F21D2645EE00CB0E9B /* LBFKTest */,
@@ -315,23 +313,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		CBD8B6531D26467A00CB0E9B /* LBCoreKit.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = LBCoreKit.framework;
-			remoteRef = CBD8B6521D26467A00CB0E9B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		CBD8B6551D26467A00CB0E9B /* LBCoreKitTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = LBCoreKitTests.xctest;
-			remoteRef = CBD8B6541D26467A00CB0E9B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CBD8B5F11D2645EE00CB0E9B /* Resources */ = {
@@ -414,10 +395,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBD8B5FE1D2645EE00CB0E9B /* ViewController.m in Sources */,
+				CBE168691D2A5999001752F6 /* LBCDownLoadManager.m in Sources */,
 				CBD8B5FB1D2645EE00CB0E9B /* AppDelegate.m in Sources */,
 				CBD8B5F81D2645EE00CB0E9B /* main.m in Sources */,
 				CBD8B66E1D29FD1C00CB0E9B /* ASProgressPopUpView.m in Sources */,
 				CBD8B66D1D29FD1C00CB0E9B /* ASPopUpView.m in Sources */,
+				CBE168681D2A5999001752F6 /* LBCDownLoad.m in Sources */,
+				CBE1686A1D2A5999001752F6 /* LBCDownLoadModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
