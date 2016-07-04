@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42A2727591305EF7B05E7DB5 /* Pods_LBFKTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC303BA743EC7EB4FE443899 /* Pods_LBFKTest.framework */; };
+		AA4CCFE81D28D17C001E5C82 /* LBCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBD8B6531D26467A00CB0E9B /* LBCoreKit.framework */; };
 		CBD8B5F81D2645EE00CB0E9B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD8B5F71D2645EE00CB0E9B /* main.m */; };
 		CBD8B5FB1D2645EE00CB0E9B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD8B5FA1D2645EE00CB0E9B /* AppDelegate.m */; };
 		CBD8B5FE1D2645EE00CB0E9B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD8B5FD1D2645EE00CB0E9B /* ViewController.m */; };
@@ -15,6 +17,7 @@
 		CBD8B6061D2645EE00CB0E9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBD8B6041D2645EE00CB0E9B /* LaunchScreen.storyboard */; };
 		CBD8B6111D2645EE00CB0E9B /* LBFKTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD8B6101D2645EE00CB0E9B /* LBFKTestTests.m */; };
 		CBD8B61C1D2645EE00CB0E9B /* LBFKTestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD8B61B1D2645EE00CB0E9B /* LBFKTestUITests.m */; };
+		CBD8B65A1D26504500CB0E9B /* LBCNetWorking.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD8B6591D26504500CB0E9B /* LBCNetWorking.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,9 +35,26 @@
 			remoteGlobalIDString = CBD8B5F21D2645EE00CB0E9B;
 			remoteInfo = LBFKTest;
 		};
+		CBD8B6521D26467A00CB0E9B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBD8B64D1D26467A00CB0E9B /* LBCoreKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CBD8B6331D26463600CB0E9B;
+			remoteInfo = LBCoreKit;
+		};
+		CBD8B6541D26467A00CB0E9B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBD8B64D1D26467A00CB0E9B /* LBCoreKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CBD8B63D1D26463600CB0E9B;
+			remoteInfo = LBCoreKitTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1BB8D48636B5931D9FD5EAF5 /* Pods-LBFKTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBFKTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-LBFKTest/Pods-LBFKTest.release.xcconfig"; sourceTree = "<group>"; };
+		BC303BA743EC7EB4FE443899 /* Pods_LBFKTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LBFKTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB1389707C5998015231A8F4 /* Pods-LBFKTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBFKTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LBFKTest/Pods-LBFKTest.debug.xcconfig"; sourceTree = "<group>"; };
 		CBD8B5F31D2645EE00CB0E9B /* LBFKTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBFKTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD8B5F71D2645EE00CB0E9B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CBD8B5F91D2645EE00CB0E9B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +71,9 @@
 		CBD8B6171D2645EE00CB0E9B /* LBFKTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LBFKTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD8B61B1D2645EE00CB0E9B /* LBFKTestUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBFKTestUITests.m; sourceTree = "<group>"; };
 		CBD8B61D1D2645EE00CB0E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBD8B64D1D26467A00CB0E9B /* LBCoreKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LBCoreKit.xcodeproj; path = LBCoreKit/LBCoreKit.xcodeproj; sourceTree = "<group>"; };
+		CBD8B6581D26504500CB0E9B /* LBCNetWorking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBCNetWorking.h; sourceTree = "<group>"; };
+		CBD8B6591D26504500CB0E9B /* LBCNetWorking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBCNetWorking.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA4CCFE81D28D17C001E5C82 /* LBCoreKit.framework in Frameworks */,
+				42A2727591305EF7B05E7DB5 /* Pods_LBFKTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +103,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		955CA9434EB26E8AD71FFD38 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC303BA743EC7EB4FE443899 /* Pods_LBFKTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CBD8B5EA1D2645EE00CB0E9B = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +118,8 @@
 				CBD8B60F1D2645EE00CB0E9B /* LBFKTestTests */,
 				CBD8B61A1D2645EE00CB0E9B /* LBFKTestUITests */,
 				CBD8B5F41D2645EE00CB0E9B /* Products */,
+				FF9A4E688FE37F398F60CAA1 /* Pods */,
+				955CA9434EB26E8AD71FFD38 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,10 +136,13 @@
 		CBD8B5F51D2645EE00CB0E9B /* LBFKTest */ = {
 			isa = PBXGroup;
 			children = (
+				CBD8B64D1D26467A00CB0E9B /* LBCoreKit.xcodeproj */,
 				CBD8B5F91D2645EE00CB0E9B /* AppDelegate.h */,
 				CBD8B5FA1D2645EE00CB0E9B /* AppDelegate.m */,
 				CBD8B5FC1D2645EE00CB0E9B /* ViewController.h */,
 				CBD8B5FD1D2645EE00CB0E9B /* ViewController.m */,
+				CBD8B6581D26504500CB0E9B /* LBCNetWorking.h */,
+				CBD8B6591D26504500CB0E9B /* LBCNetWorking.m */,
 				CBD8B5FF1D2645EE00CB0E9B /* Main.storyboard */,
 				CBD8B6021D2645EE00CB0E9B /* Assets.xcassets */,
 				CBD8B6041D2645EE00CB0E9B /* LaunchScreen.storyboard */,
@@ -140,6 +178,24 @@
 			path = LBFKTestUITests;
 			sourceTree = "<group>";
 		};
+		CBD8B64E1D26467A00CB0E9B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CBD8B6531D26467A00CB0E9B /* LBCoreKit.framework */,
+				CBD8B6551D26467A00CB0E9B /* LBCoreKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FF9A4E688FE37F398F60CAA1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CB1389707C5998015231A8F4 /* Pods-LBFKTest.debug.xcconfig */,
+				1BB8D48636B5931D9FD5EAF5 /* Pods-LBFKTest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +203,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CBD8B6201D2645EE00CB0E9B /* Build configuration list for PBXNativeTarget "LBFKTest" */;
 			buildPhases = (
+				8D577E8956F1884FC1D0217A /* 📦 Check Pods Manifest.lock */,
 				CBD8B5EF1D2645EE00CB0E9B /* Sources */,
 				CBD8B5F01D2645EE00CB0E9B /* Frameworks */,
 				CBD8B5F11D2645EE00CB0E9B /* Resources */,
+				D3979AD8943982D58C1D8D56 /* 📦 Embed Pods Frameworks */,
+				0DB36BF45F02302E482CAA80 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -229,6 +288,12 @@
 			mainGroup = CBD8B5EA1D2645EE00CB0E9B;
 			productRefGroup = CBD8B5F41D2645EE00CB0E9B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = CBD8B64E1D26467A00CB0E9B /* Products */;
+					ProjectRef = CBD8B64D1D26467A00CB0E9B /* LBCoreKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				CBD8B5F21D2645EE00CB0E9B /* LBFKTest */,
@@ -237,6 +302,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		CBD8B6531D26467A00CB0E9B /* LBCoreKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = LBCoreKit.framework;
+			remoteRef = CBD8B6521D26467A00CB0E9B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		CBD8B6551D26467A00CB0E9B /* LBCoreKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = LBCoreKitTests.xctest;
+			remoteRef = CBD8B6541D26467A00CB0E9B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CBD8B5F11D2645EE00CB0E9B /* Resources */ = {
@@ -265,6 +347,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0DB36BF45F02302E482CAA80 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LBFKTest/Pods-LBFKTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D577E8956F1884FC1D0217A /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D3979AD8943982D58C1D8D56 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LBFKTest/Pods-LBFKTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CBD8B5EF1D2645EE00CB0E9B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -273,6 +403,7 @@
 				CBD8B5FE1D2645EE00CB0E9B /* ViewController.m in Sources */,
 				CBD8B5FB1D2645EE00CB0E9B /* AppDelegate.m in Sources */,
 				CBD8B5F81D2645EE00CB0E9B /* main.m in Sources */,
+				CBD8B65A1D26504500CB0E9B /* LBCNetWorking.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +542,7 @@
 		};
 		CBD8B6211D2645EE00CB0E9B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB1389707C5998015231A8F4 /* Pods-LBFKTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LBFKTest/Info.plist;
@@ -422,6 +554,7 @@
 		};
 		CBD8B6221D2645EE00CB0E9B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BB8D48636B5931D9FD5EAF5 /* Pods-LBFKTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LBFKTest/Info.plist;
@@ -496,6 +629,7 @@
 				CBD8B6221D2645EE00CB0E9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CBD8B6231D2645EE00CB0E9B /* Build configuration list for PBXNativeTarget "LBFKTestTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +638,7 @@
 				CBD8B6251D2645EE00CB0E9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CBD8B6261D2645EE00CB0E9B /* Build configuration list for PBXNativeTarget "LBFKTestUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +647,7 @@
 				CBD8B6281D2645EE00CB0E9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
