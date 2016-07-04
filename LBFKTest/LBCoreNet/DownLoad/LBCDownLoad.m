@@ -365,7 +365,8 @@ static LBCDownLoad *_myDownload;
  */
 -(NSString *)filesSize:(NSString *)url
 {
-    NSInteger totalLength=[self getAllLength:url.hash];
+    LBCDownLoadModel *lbc_Model = [self.downloadDic valueForKey:@(url.hash).stringValue];
+    NSInteger totalLength= lbc_Model.allLength;//[self getAllLength:url.hash];
     if(totalLength==0)
     {
         return @"0.00K/0.00K";
@@ -395,6 +396,8 @@ response completionHandler:(void (^)(NSURLSessionResponseDisposition))completion
     [lbc_Model.stream open];
     completionHandler(NSURLSessionResponseAllow);
 }
+
+
 // 接受数据（会多次调用）
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
     
