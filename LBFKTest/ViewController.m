@@ -7,52 +7,205 @@
 //
 
 #import "ViewController.h"
-#import "LBCoreKit/LBCoreKit/LBCoreNet/DownLoad/LBCDownLoad.h"
+#import "ASProgressPopUpView.h"
+#import "LBCoreKit/LBCoreKit/LBCoreNet/DownLoad/LBCDownLoadManager.h"
+#import <Masonry/Masonry.h>
+#import "LBCoreKit/LBCoreKit/LBMacro/UtilsMacro.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 NSString *URL = @"http://baobab.wdjcdn.com/1455782903700jy.mp4";
-@interface ViewController (){
-    UILabel *_label1;
-    UILabel *_label2;
-    UIButton *_button1;
-    UIButton *_button2;
-    UIProgressView *_pv1;
-}
+NSString *URL1 = @"http://android-mirror.bugly.qq.com:8080/eclipse_mirror/juno/content.jar";
+@interface ViewController ()
+@property (strong, nonatomic) ASProgressPopUpView *progressView1;
 
+@property (strong, nonatomic) UIButton *downLoadBtn1;
+
+@property (strong, nonatomic) UILabel *speedLabel1;
+
+@property (strong, nonatomic) UILabel *sizeLabel1;
+
+@property (strong, nonatomic) ASProgressPopUpView *progressView2;
+
+@property (strong, nonatomic) UIButton *downLoadBtn2;
+
+@property (strong, nonatomic) UILabel *speedLabel2;
+
+@property (strong, nonatomic) UIButton *removeBtn;
+
+@property (strong, nonatomic) UILabel *sizeLabel2;
 @end
 
 @implementation ViewController
 
+#pragma mark - lazyLoad
+-(ASProgressPopUpView *)progressView1{
+    if (!_progressView1) {
+        _progressView1 = [ASProgressPopUpView new];
+        _progressView1.popUpViewCornerRadius = 10.0;
+        _progressView1.font = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:20];
+        [_progressView1 showPopUpViewAnimated:YES];
+        _progressView1.progress = [[LBCDownLoadManager shredManager]getDownLoadProgressWithUrl:URL];
+    }
+    return _progressView1;
+}
+
+-(ASProgressPopUpView *)progressView2{
+    if (!_progressView2) {
+        _progressView2 = [ASProgressPopUpView new];
+        _progressView2.popUpViewCornerRadius = 10.0;
+        _progressView2.font = [UIFont fontWithName:@"Futura-CondensedExtraBold" size:20];
+        [_progressView2 showPopUpViewAnimated:YES];
+        _progressView2.progress = [[LBCDownLoadManager shredManager]getDownLoadProgressWithUrl:URL1];
+    }
+    return _progressView2;
+}
+
+-(UIButton *)downLoadBtn1{
+    if (!_downLoadBtn1) {
+        _downLoadBtn1 = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_downLoadBtn1 setTitleColor:[UIColor grayColor] forState:0];
+        [_downLoadBtn1 setTitle:@"开始" forState:0];
+        [_downLoadBtn1 setTitle:@"暂停" forState:UIControlStateSelected];
+        @weakify(self);
+        [[_downLoadBtn1 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+            @strongify(self);
+            [self click1:x];
+        }];
+    }
+    return _downLoadBtn1;
+}
+-(UILabel *)sizeLabel1{
+    if (!_sizeLabel1) {
+        _sizeLabel1 = [UILabel new];
+        _sizeLabel1.font = [UIFont systemFontOfSize:12];
+    }
+    return _sizeLabel1;
+}
+
+-(UILabel *)sizeLabel2{
+    if (!_sizeLabel2) {
+        _sizeLabel2= [UILabel new];
+        _sizeLabel2.font = [UIFont systemFontOfSize:12];
+    }
+    return _sizeLabel2;
+}
+
+-(UIButton *)downLoadBtn2{
+    if (!_downLoadBtn2) {
+        _downLoadBtn2 = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_downLoadBtn2 setTitleColor:[UIColor grayColor] forState:0];
+        [_downLoadBtn2 setTitle:@"开始" forState:0];
+        [_downLoadBtn2 setTitle:@"暂停" forState:UIControlStateSelected];
+        @weakify(self);
+        [[_downLoadBtn2 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+            @strongify(self);
+            [self click2:x];
+        }];
+    }
+    return _downLoadBtn2;
+}
+
+-(UIButton *)removeBtn{
+    if (!_removeBtn) {
+        _removeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _removeBtn.backgroundColor = [UIColor orangeColor];
+        [_removeBtn setTitle:@"清除" forState:0];
+        _removeBtn.layer.cornerRadius = 5.f;
+        [[_removeBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+            [self removeAll:x];
+        }];
+        
+    }
+    return _removeBtn;
+}
+
+-(UILabel *)speedLabel1{
+    if (!_speedLabel1) {
+        _speedLabel1 = [UILabel new];
+        _speedLabel1.font = [UIFont systemFontOfSize:13];
+    }
+    return _speedLabel1;
+}
+
+-(UILabel *)speedLabel2{
+    if (!_speedLabel2) {
+        _speedLabel2 = [UILabel new];
+        _speedLabel2.font = [UIFont systemFontOfSize:13];
+    }
+    return _speedLabel2;
+}
+#pragma  mark -
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UILabel *label1 = [[UILabel alloc]initWithFrame:CGRectMake(0, 30, 50, 50)];
-    label1.text = [NSString stringWithFormat:@"%.2f",[[LBCDownLoad sharedInstance]progressWithUrl:URL]];
-    label1.textColor = [UIColor blackColor];
-    [self.view addSubview:label1];
-    _label1 = label1;
+    NSLog(@"%@",[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject]);
+    [self.view addSubview:self.progressView1];
+    [self.view addSubview:self.downLoadBtn1];
+    [self.view addSubview:self.speedLabel1];
+    [self.view addSubview:self.sizeLabel1];
+    [self.view addSubview:self.removeBtn];
+    [self.view addSubview:self.progressView2];
+    [self.view addSubview:self.downLoadBtn2];
+    [self.view addSubview:self.speedLabel2];
+    [self.view addSubview:self.sizeLabel2];
+    [self.view updateConstraintsIfNeeded];
+    [self.view setNeedsUpdateConstraints];
+}
+-(void)initDownLoad{
     
-    UILabel *label2 = [[UILabel alloc]initWithFrame:CGRectMake(50, 90, 200, 50)];
-    label2.textColor = [UIColor blackColor];
-    [self.view addSubview:label2];
-    _label2 = label2;
-    UIProgressView *pv1 = [[UIProgressView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(label1.frame), 50, 200, 30)];
-    pv1.progressTintColor = [UIColor blueColor];
-    pv1.progress = [[LBCDownLoad sharedInstance]progressWithUrl:URL];
-    [self.view addSubview:pv1];
-    _pv1 = pv1;
-    UIButton *button1 = [[UIButton alloc]init];
-    button1.frame = CGRectMake(CGRectGetMaxX(pv1.frame), 30, 50, 50);
-    [button1 setTitleColor:[UIColor orangeColor] forState:0];
-    [button1 setTitle:@"开始" forState:0];
-    [button1 setTitle:@"停止" forState:UIControlStateSelected];
-    [button1 addTarget:self action:@selector(click1:) forControlEvents:(UIControlEventTouchUpInside)];
-    _button1 = button1;
-    [self.view addSubview:button1];
+
+}
+
+-(void)updateViewConstraints{
+    WS(weakSelf);
+    [self.progressView1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(weakSelf.view).with.offset(-30);
+        make.top.equalTo(weakSelf.view).with.offset(150);
+        make.width.equalTo(@200);
+    }];
     
-    UIButton *rBtn3 = [[UIButton alloc]init];
-    rBtn3.backgroundColor = [UIColor orangeColor];
-    rBtn3.frame = CGRectMake(200, 200, 50, 30);
-    [rBtn3 setTitle:@"清空" forState:(UIControlStateNormal)];
-    [self.view addSubview:rBtn3];
-    [rBtn3 addTarget:self action:@selector(removeAll:) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.downLoadBtn1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.progressView1.mas_right).with.offset(15);
+        make.centerY.equalTo(weakSelf.progressView1);
+    }];
+    
+    [self.speedLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(weakSelf.progressView1.mas_left).with.offset(-10);
+        make.centerY.equalTo(weakSelf.progressView1);
+    }];
+    [self.progressView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(weakSelf.view).with.offset(-30);
+        make.top.equalTo(weakSelf.view).with.offset(270);
+        make.width.equalTo(@200);
+    }];
+    
+    [self.downLoadBtn2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.progressView2.mas_right).with.offset(15);
+        make.centerY.equalTo(weakSelf.progressView2);
+    }];
+    
+    
+    
+    [self.speedLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(weakSelf.progressView2.mas_left).with.offset(-10);
+        make.centerY.equalTo(weakSelf.progressView2);
+    }];
+    [self.removeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(weakSelf.view);
+        make.bottom.equalTo(weakSelf.view).with.offset(-300);
+        make.size.mas_equalTo(CGSizeMake(100, 40));
+    }];
+    
+    [self.sizeLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(weakSelf.downLoadBtn2.mas_top).with.offset(-10);
+        make.centerX.equalTo(weakSelf.downLoadBtn2);
+    }];
+    
+    [self.sizeLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(weakSelf.downLoadBtn1.mas_top).with.offset(-10);
+        make.centerX.equalTo(weakSelf.downLoadBtn1);
+    }];
+    
+   
+    [super updateViewConstraints];
 }
 
 
@@ -61,63 +214,52 @@ NSString *URL = @"http://baobab.wdjcdn.com/1455782903700jy.mp4";
     return scaleStr;
 }
 - (void)click1:(UIButton *)button {
+    
+    if (button.selected) {
+        [[LBCDownLoadManager shredManager] suspendDownloadTask:URL];
+    }else{
+        WS(weakSelf);
+        [[LBCDownLoadManager shredManager]downLoad:URL fileName:@"1455782903700jy.mp4" progress:^(CGFloat progress, NSString *sizeString, NSString *speedString) {
+            weakSelf.progressView1.progress = progress;
+            weakSelf.speedLabel1.text = speedString;
+            weakSelf.sizeLabel1.text = sizeString;
+        } success:^(NSString *filePath) {
+            
+        } failure:^(NSError *error) {
+            
+        }];
+    }
     button.selected = !button.selected;
-    [[LBCDownLoad sharedInstance]   downLoad:URL
-                                      resume:button.selected
-                                    progress:^(CGFloat progress, NSUInteger size, NSString *speedString) {
-                                        NSLog(@"下载进度: %f",progress);
-                                        NSLog(@"已下载： %lu",(unsigned long)size);
-                                        NSLog(@"下载速度： %@",speedString);
-                                        _pv1.progress = progress;
-                                        _label1.text = [NSString stringWithFormat:@"%.2f",progress];
-                                        _label2.text = [NSString stringWithFormat:@"%@",speedString];
-                                    } state:^(LBCDownloadState state) {
-                                        switch (state) {
-                                                //下载中
-                                            case LBCDownloadStateRunning:
-                                            {
-                                                
-                                            }
-                                                break;
-                                                //下载暂停
-                                            case LBCDownloadStateSuspended:
-                                            {
-                                                
-                                            }
-                                                break;
-                                                //下载完成
-                                            case LBCDownloadStateCompleted:
-                                            {
-                                                
-                                            }
-                                                break;
-                                                //取消下载
-                                            case LBCDownloadStateCanceled:
-                                            {
-                                                
-                                            }
-                                                break;
-                                                //下载失败
-                                            case LBCDownloadStateFailed:
-                                            {
-                                                
-                                            }
-                                                break;
-                                                
-                                                
-                                            default:
-                                                break;
-                                        }
-                                    }];
 }
 
+- (void)click2:(UIButton *)button {
+    
+    if (button.selected) {
+        [[LBCDownLoadManager shredManager] suspendDownloadTask:URL1];
+    }else{
+        WS(weakSelf);
+        [[LBCDownLoadManager shredManager]downLoad:URL1 fileName:@"content.jar" progress:^(CGFloat progress, NSString *sizeString, NSString *speedString) {
+            weakSelf.progressView2.progress = progress;
+            weakSelf.speedLabel2.text = speedString;
+            weakSelf.sizeLabel2.text = sizeString;
+        } success:^(NSString *filePath) {
+            
+        } failure:^(NSError *error) {
+            
+        }];
+    }
+    button.selected = !button.selected;
+}
+
+
 - (void)removeAll:(UIButton *)button {
-    _label1.text = @"0.00";
-    _pv1.progress = 0;
-    _label2.text = @"0.0kb/s";
-    _button1.selected = NO;
-    _button2.selected = NO;
-    [[LBCDownLoad sharedInstance] removeAllFileData];
+    self.speedLabel1.text = @"0kb/s";
+    self.progressView1.progress = 0;
+    self.downLoadBtn1.selected = NO;
+    self.speedLabel2.text = @"0kb/s";
+    self.progressView2.progress = 0;
+    self.downLoadBtn2.selected = NO;
+    [[LBCDownLoadManager shredManager] removeAllFileData];
 }
 
 - (void)didReceiveMemoryWarning {

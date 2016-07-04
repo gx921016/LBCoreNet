@@ -17,7 +17,8 @@
 		CBD8B6061D2645EE00CB0E9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CBD8B6041D2645EE00CB0E9B /* LaunchScreen.storyboard */; };
 		CBD8B6111D2645EE00CB0E9B /* LBFKTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD8B6101D2645EE00CB0E9B /* LBFKTestTests.m */; };
 		CBD8B61C1D2645EE00CB0E9B /* LBFKTestUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD8B61B1D2645EE00CB0E9B /* LBFKTestUITests.m */; };
-		CBD8B65A1D26504500CB0E9B /* LBCNetWorking.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD8B6591D26504500CB0E9B /* LBCNetWorking.m */; };
+		CBD8B66D1D29FD1C00CB0E9B /* ASPopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD8B66A1D29FD1C00CB0E9B /* ASPopUpView.m */; };
+		CBD8B66E1D29FD1C00CB0E9B /* ASProgressPopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD8B66C1D29FD1C00CB0E9B /* ASProgressPopUpView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,8 +73,10 @@
 		CBD8B61B1D2645EE00CB0E9B /* LBFKTestUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LBFKTestUITests.m; sourceTree = "<group>"; };
 		CBD8B61D1D2645EE00CB0E9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBD8B64D1D26467A00CB0E9B /* LBCoreKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LBCoreKit.xcodeproj; path = LBCoreKit/LBCoreKit.xcodeproj; sourceTree = "<group>"; };
-		CBD8B6581D26504500CB0E9B /* LBCNetWorking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBCNetWorking.h; sourceTree = "<group>"; };
-		CBD8B6591D26504500CB0E9B /* LBCNetWorking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBCNetWorking.m; sourceTree = "<group>"; };
+		CBD8B6691D29FD1C00CB0E9B /* ASPopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASPopUpView.h; sourceTree = "<group>"; };
+		CBD8B66A1D29FD1C00CB0E9B /* ASPopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASPopUpView.m; sourceTree = "<group>"; };
+		CBD8B66B1D29FD1C00CB0E9B /* ASProgressPopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASProgressPopUpView.h; sourceTree = "<group>"; };
+		CBD8B66C1D29FD1C00CB0E9B /* ASProgressPopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASProgressPopUpView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,8 +144,7 @@
 				CBD8B5FA1D2645EE00CB0E9B /* AppDelegate.m */,
 				CBD8B5FC1D2645EE00CB0E9B /* ViewController.h */,
 				CBD8B5FD1D2645EE00CB0E9B /* ViewController.m */,
-				CBD8B6581D26504500CB0E9B /* LBCNetWorking.h */,
-				CBD8B6591D26504500CB0E9B /* LBCNetWorking.m */,
+				CBD8B6681D29FD1C00CB0E9B /* ASProgressPopUpView */,
 				CBD8B5FF1D2645EE00CB0E9B /* Main.storyboard */,
 				CBD8B6021D2645EE00CB0E9B /* Assets.xcassets */,
 				CBD8B6041D2645EE00CB0E9B /* LaunchScreen.storyboard */,
@@ -185,6 +187,17 @@
 				CBD8B6551D26467A00CB0E9B /* LBCoreKitTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CBD8B6681D29FD1C00CB0E9B /* ASProgressPopUpView */ = {
+			isa = PBXGroup;
+			children = (
+				CBD8B6691D29FD1C00CB0E9B /* ASPopUpView.h */,
+				CBD8B66A1D29FD1C00CB0E9B /* ASPopUpView.m */,
+				CBD8B66B1D29FD1C00CB0E9B /* ASProgressPopUpView.h */,
+				CBD8B66C1D29FD1C00CB0E9B /* ASProgressPopUpView.m */,
+			);
+			path = ASProgressPopUpView;
 			sourceTree = "<group>";
 		};
 		FF9A4E688FE37F398F60CAA1 /* Pods */ = {
@@ -403,7 +416,8 @@
 				CBD8B5FE1D2645EE00CB0E9B /* ViewController.m in Sources */,
 				CBD8B5FB1D2645EE00CB0E9B /* AppDelegate.m in Sources */,
 				CBD8B5F81D2645EE00CB0E9B /* main.m in Sources */,
-				CBD8B65A1D26504500CB0E9B /* LBCNetWorking.m in Sources */,
+				CBD8B66E1D29FD1C00CB0E9B /* ASProgressPopUpView.m in Sources */,
+				CBD8B66D1D29FD1C00CB0E9B /* ASPopUpView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
