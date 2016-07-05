@@ -1,55 +1,30 @@
-# LBCoreNet
 ![孤独的香蕉.png](http://upload-images.jianshu.io/upload_images/2055592-2195e3e75cdebe08.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ***
 <h6>因为本人是个巨懒无比，最近我在寻找一个下载的第三方库，可是找了半天木有很完美的，所以只能自己动手写，虽然很懒得写但是为了活命，还是努力的动手了。</h6>
+
+<h5>我更新了代码之前写的有些问题，也太丑了，我要对得起老爷们...
 ***
->先不废话，首先队列控制还木有实现，但是多任务下载，获取下载进度，获取下载速度，暂停继续都已经OK了。下面是调用，先看看是不是各位老爷们要的。
+>先不废话，首先队列控制还木有完全实现，因为最近工作比较忙，所以老爷们有问题给我留言就好啦，大家一起讨论，但是多任务下载，获取下载进度，获取下载速度，暂停继续都已经OK了。下面是调用，先看看是不是各位老爷们要的。
 >
 
+
+
+![downLoad.gif](http://upload-images.jianshu.io/upload_images/2055592-ae662c29910e1ea0.gif?imageMogr2/auto-orient/strip)
 ```
-[[LBCDownLoad sharedInstance] downLoad:URL
-                                      resume:YES
-                                    progress:^(CGFloat progress, NSUInteger size, NSString *speedString) {
-                                        NSLog(@"下载进度: %f",progress);
-                                        NSLog(@"已下载： %lu",(unsigned long)size);
-                                        NSLog(@"下载速度： %@",speedString);
-                                    } state:^(LBCDownloadState state) {
-                                        switch (state) {
-                                                //下载中
-                                            case LBCDownloadStateRunning:
-                                            {
-                                                
-                                            }
-                                                break;
-                                                //下载暂停
-                                            case LBCDownloadStateSuspended:
-                                            {
-                                                
-                                            }
-                                                break;
-                                                //下载完成
-                                            case LBCDownloadStateCompleted:
-                                            {
-                                                
-                                            }
-                                                break;
-                                                //取消下载
-                                            case LBCDownloadStateCanceled:
-                                            {
-                                                
-                                            }
-                                                break;
-                                                //下载失败
-                                            case LBCDownloadStateFailed:
-                                            {
-                                                
-                                            }
-                                                break;
-                                        }
-                                    }];
+[[LBCDownLoadManager shredManager]downLoad:URL
+                                          fileName:@"你下载任务的名字如:苍老师.avi"
+                                          progress:^(CGFloat progress, NSString *sizeString, NSString *speedString) {
+                                              NSLog(@"下载进度: %f",progress);
+                                              NSLog(@"%@",sizeString);
+                                              NSLog(@"下载速度： %@",speedString);
+                                          } success:^(NSString *filePath) {
+                                              
+                                          } failure:^(NSError *error) {
+                                              
+                                          }];
 ```
 
-><h6>这个是我自己封装的虽然看起来有些蠢，但是还是挺好用的，首先URL就是下载地址，其次```resume```这个参数重要的不行，就是是否开始，所以其实只需要调用这一个方法就够了，```resume```如果为```YES```那么就继续开始下载，反之暂停下载，别的各位老爷您就自己看吧。
+><h6>第一个参数就是下载的URL 第二个为你下载文件的文件名，然后返回参数老爷们自己看吧，你们这么聪明就不用我介绍了，再往下是成功后返回文件路径。拿到后你们可以随意做你们想做的事情了，失败后会有error，这里说下，暂停也会走failure这个block，所以大家需要判断下，稍候我会完善下。或者老爷们自己动手完善下也可以。
 
 ***
 <h5>接下来说下思路吧，我用的是```NSURLSessionDataTask```来实现的断点下载。
@@ -72,55 +47,54 @@
 
 ```
 #pragma mark - 下载方法
--(NSURLSessionDataTask*)downLoad:(NSString *)URLString resume:(BOOL)resume progress:(void (^)(CGFloat, NSUInteger, NSString *))progressBlock state:(void (^)(LBCDownloadState))stateBlack{
-    self.url = URLString;
-    //判断是否已经下载完成
-    if ([self getAllLength:URLString.hash]==[self getFileDownloadedLength:URLString.hash]&&[self getFileDownloadedLength:URLString.hash]>0) {
-         LBCDownLoadModel *lbcModel = [self.downloadDic valueForKey:@(URLString.hash).stringValue];
-        if (stateBlack) {
-            stateBlack(LBCDownloadStateCompleted);
-        }
-        if (progressBlock) {
-            progressBlock(1.0,[self getFileDownloadedLength:URLString.hash],@"0kb/s");
-        }
-        return lbcModel.task;
-    }
-    //判断是否正在下载中的任务 （暂停和继续）
-    if ([self.downloadDic valueForKey:@(URLString.hash).stringValue]) {
-        LBCDownLoadModel *lbcModel = [self.downloadDic valueForKey:@(URLString.hash).stringValue];
-        if (resume) {
-            [lbcModel.task resume];
-            
-        }else {
-            [lbcModel.task suspend];
-            if (lbcModel.stateBlock) {
-                lbcModel.stateBlock(LBCDownloadStateSuspended);
+/**
+ *  断点下载
+ *
+ *  @param urlString        下载的链接
+ *  @param destinationPath  下载的文件的保存路径
+ *  @param  process         下载过程中回调的代码块，会多次调用
+ *  @param  completion      下载完成回调的代码块
+ *  @param  failure         下载失败的回调代码块
+ */
+-(void)downloadWithUrlString:(NSString *)urlString toFileName:(NSString *)fileName process:(ProcessHandle)process completion:(CompletionHandle)completion failure:(FailureHandle)failure{
+    if(urlString&&fileName)
+    {
+        self.url_string=urlString;
+        _fileName=fileName;
+        _process=process;
+        _completion=completion;
+        _failure=failure;
+        //判断是否已经下载完成
+        if ([self getAllLength:urlString.hash]==[self getFileDownloadedLength:urlString.hash]&&[self getFileDownloadedLength:urlString.hash]>0) {
+            if (completion) {
+                completion();
             }
-            
+            if (process) {
+                process(1.0,[self filesSize:urlString],@"0kb/s");
+            }
+            return;
         }
-        return lbcModel.task;
-    }
-    // 建立请求
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:URLString]];
-    // 设置请求头
-    NSString *range = [NSString stringWithFormat:@"bytes=%zd-", [self getFileDownloadedLength:URLString.hash]];
-    [request setValue:range forHTTPHeaderField:@"Range"];
-    // 创建一个Data任务
-    NSURLSessionDataTask *task = [self.LBCSession dataTaskWithRequest:request];
-   // 设置下载任务的唯一标示
-    [task setValue:@(URLString.hash) forKeyPath:@"taskIdentifier"];
-    LBCDownLoadModel *lbc_download = [[LBCDownLoadModel alloc]init];
-    lbc_download.task = task;
-    lbc_download.progressBlock = progressBlock;
-    lbc_download.stateBlock = stateBlack;
-    [self.downloadDic setValue:lbc_download forKey:@(URLString.hash).stringValue];
-    if (resume) {
+        
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+        // 设置请求头
+        NSString *range = [NSString stringWithFormat:@"bytes=%zd-", [self getFileDownloadedLength:urlString.hash]];
+        [request setValue:range forHTTPHeaderField:@"Range"];
+        // 创建一个Data任务
+        NSURLSessionDataTask *task = [self.LBCSession dataTaskWithRequest:request];
+        // 设置下载任务的唯一标示
+        [task setValue:@(urlString.hash) forKeyPath:@"taskIdentifier"];
+        LBCDownLoadModel *lbc_download = [[LBCDownLoadModel alloc]init];
+        lbc_download.task = task;
+        lbc_download.fileName = fileName;
+        lbc_download.ProcessHandle = process;
+        lbc_download.CompetionHandle = completion;
+        lbc_download.FailureHandle = failure;
+        [self.downloadDic setValue:lbc_download forKey:@(urlString.hash).stringValue];
         [task resume];
+        
     }
-    return task;
 }
 ```
-
 >从```NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:URLString]];```建立请求开始为正式创建下载任务，上面为判断的是否已经下载和任务继续暂停。
 上述代码中的```URLString.hash```为url的哈希值，去这个哈希值为的是做唯一标示，在多任务处理数据时可以根据唯一标识来判断是哪个任务。
 
@@ -184,5 +158,3 @@ response completionHandler:(void (^)(NSURLSessionResponseDisposition))completion
     _lastSize=size;
 }
 ```
-<h5>我的简书 http://www.jianshu.com/users/008b8913a130/latest_articles 
-***
