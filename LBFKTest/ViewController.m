@@ -110,7 +110,9 @@ NSString *URL1 = @"http://android-mirror.bugly.qq.com:8080/eclipse_mirror/juno/c
         _removeBtn.backgroundColor = [UIColor orangeColor];
         [_removeBtn setTitle:@"清除" forState:0];
         _removeBtn.layer.cornerRadius = 5.f;
+        @weakify(self);
         [[_removeBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+            @strongify(self);
             [self removeAll:x];
         }];
         
@@ -209,10 +211,7 @@ NSString *URL1 = @"http://android-mirror.bugly.qq.com:8080/eclipse_mirror/juno/c
 }
 
 
-- (NSString *)getText:(CGFloat)progress {
-    NSString *scaleStr = [NSString stringWithFormat:@"%.2f",progress];
-    return scaleStr;
-}
+
 - (void)click1:(UIButton *)button {
     
     if (button.selected) {
